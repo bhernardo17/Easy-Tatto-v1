@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login ou Cadastro - Meu Sistema</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/tema.css">
+    <script src="/js/script.js" defer></script>
+</head>
+<body>
+    <div class="login-container">
+        <h1 id="form-title">
+            <img src="/img/logo-easy.jpg" style="width: 280px; height: 160px;">
+        </h1>
+        
+        <!-- Botão para alternar entre Login e Cadastro -->
+        <button id="toggle-form" onclick="toggleForm()">Cadastrar-se</button>
+
+        <form action="/login" method="POST" id="login-form">
+            <div class="input-group">
+                <label for="username">Usuário</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            
+            <!-- Campos extras para cadastro (inicialmente ocultos) -->
+            <div id="register-fields" style="display: none;">
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email">
+                </div>
+                <div class="input-group">
+                    <label for="confirm-password">Confirmar Senha</label>
+                    <input type="password" id="confirm-password" name="confirm-password">
+                </div>
+                <div class="input-group">
+                    <label for="role">Tipo de Conta</label>
+                    <select id="role" name="role">
+                        <option value="usuario">Usuário</option>
+                        <option value="tatuador">Tatuador</option>
+                    </select>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-login" id="submit-btn">Entrar</button>
+            <p class="error-message" style="display: none;">Usuário ou senha incorretos.</p>
+        </form>
+    </div>
+
+    <script>
+        // Alterna entre os modos de Login e Cadastro
+        function toggleForm() {
+            const isLogin = document.getElementById("register-fields").style.display === "none";
+            document.getElementById("register-fields").style.display = isLogin ? "block" : "none";
+            document.getElementById("form-title").innerHTML = isLogin 
+                ? "<h1>Cadastro</h1>"
+                : "<h1>Bem-vindo ao Easy Tattoo!</h1><img src='/img/logo-easy.jpg' style='width: 280px; height: 160px;'>";
+            document.getElementById("toggle-form").innerText = isLogin ? "Já tem uma conta? Entrar" : "Cadastrar-se";
+            document.getElementById("submit-btn").innerText = isLogin ? "Cadastrar" : "Entrar";
+            document.getElementById("login-form").action = isLogin ? "/cadastro" : "/login";
+        }
+
+        // Adiciona um manipulador para o evento de envio do formulário
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita o envio do formulário para validar as credenciais
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Simule uma verificação de credenciais (substitua pela sua lógica)
+            if (username === 'usuario' && password === 'senha') {
+                // Se as credenciais forem válidas, você pode redirecionar ou processar o login
+                window.location.href = "pagina_de_boas_vindas.html"; // Exemplo de redirecionamento
+            } else {
+                // Se as credenciais forem inválidas, mostre a mensagem de erro
+                const errorMessage = document.querySelector('.error-message');
+                errorMessage.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+<script src="/js/script.js"></script>
+</html>
+
+
+
+
+

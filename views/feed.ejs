@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feed de Tatuagens</title>
+    <link rel="stylesheet" href="/css/feed.css">
+    <link rel="stylesheet" href="/css/sidebar.css">
+    <link rel="stylesheet" href="/css/tema.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <!-- Ícone de Menu (visível apenas quando a sidebar está fechada) -->
+        <span class="menu-icon">☰</span>
+        <!-- Texto do cabeçalho (visível quando a sidebar está expandida) -->
+        <h2 class="header-text">Fácil encontrar uma Tatto!</h2>
+    </div>
+
+    <ul class="sidebar-menu">
+        <li><a href="perfil"><i class="fa fa-user"></i><span class="menu-text">Meu Perfil</span></a></li>
+        <li><a href="feed"><i class="fa fa-paint-brush"></i><span class="menu-text">Tatuagens</span></a></li>
+        <li><a href="sobre"><i class="fa fa-info-circle"></i><span class="menu-text">Sobre</span></a></li>
+    </ul>
+
+    <div class="sidebar-footer">
+        <a href="config"><i class="fa fa-cogs"></i><span class="menu-text">Configurações</span></a>
+        <a href="login"><i class="fa fa-sign-out-alt"></i><span class="menu-text">Logout</span></a>
+    </div>
+</div>
+
+
+<header>
+    <h1>Easy Tatto</h1>
+</header>
+
+
+
+
+<main class="feed-container">
+    <% posts.forEach(post => { %>
+        <div class="post-card">
+            <img src="<%= post.imageUrl %>" alt="Tatuagem de <%= post.artistName %>">
+            <div class="post-details">
+                <h2><%= post.artistName %></h2>
+                <p class="description"><%= post.description %></p>
+                <div class="post-actions">
+                    <span class="likes">❤️ <%= post.likes %></span>
+                    <span class="comments">💬 <%= post.comments %></span>
+                </div>
+            </div>
+        </div>
+    <% }); %>
+</main>
+
+</body>
+<script src="/js/script.js"></script>
+</html>

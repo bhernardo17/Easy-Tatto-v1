@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feed de Tatuagens</title>
+    <link rel="stylesheet" href="/css/feed.css">
+    <link rel="stylesheet" href="/css/sidebar.css">
+    <link rel="stylesheet" href="/css/tema.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <span class="menu-icon">☰</span>
+        <h2 class="header-text">Fácil encontrar uma Tatto!</h2>
+    </div>
+
+    <ul class="sidebar-menu">
+        <li><a href="perfil"><i class="fa fa-user"></i><span class="menu-text">Meu Perfil</span></a></li>
+        <li><a href="feed"><i class="fa fa-paint-brush"></i><span class="menu-text">Tatuagens</span></a></li>
+        <li><a href="sobre"><i class="fa fa-info-circle"></i><span class="menu-text">Sobre</span></a></li>
+    </ul>
+
+    <div class="sidebar-footer">
+        <a href="config"><i class="fa fa-cogs"></i><span class="menu-text">Configurações</span></a>
+        <a href="login"><i class="fa fa-sign-out-alt"></i><span class="menu-text">Logout</span></a>
+    </div>
+</div>
+
+<header>
+    <h1>Easy Tatto</h1>
+</header>
+
+<div class="config-secao" style="margin-left:8% ;">
+    <h3>Personalização de Tema</h3>
+    <label for="bgColorPicker">Escolha a cor do background:</label>
+    <input type="color" id="bgColorPicker">
+</div>
+  
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const bgColorPicker = document.getElementById('bgColorPicker');
+
+        // Define a cor padrão se não houver uma no localStorage
+        const savedBgColor = localStorage.getItem('backgroundColor') || '#1c1c1c';
+        document.body.style.setProperty('--background-color', savedBgColor);  // Aplica a cor de fundo global
+        bgColorPicker.value = savedBgColor;
+
+        // Adiciona o evento de mudança de cor
+        bgColorPicker.addEventListener('input', () => {
+            const selectedColor = bgColorPicker.value;
+            document.body.style.setProperty('--background-color', selectedColor);  // Atualiza o fundo global
+            localStorage.setItem('backgroundColor', selectedColor);  // Salva a cor no localStorage
+        });
+    });
+</script>
+
+</body>
+<script src="/js/script.js"></script>
+</html>

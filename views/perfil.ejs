@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Tatuador</title>
+    <link rel="stylesheet" href="/css/perfilTatuador.css">
+    <link rel="stylesheet" href="/css/sidebar.css">
+    <link rel="stylesheet" href="/css/tema.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <!-- Ícone de Menu (visível apenas quando a sidebar está fechada) -->
+        <span class="menu-icon">☰</span>
+        <!-- Texto do cabeçalho (visível quando a sidebar está expandida) -->
+        <h2 class="header-text">Fácil encontrar uma Tatto!</h2>
+    </div>
+
+    <ul class="sidebar-menu">
+        <li><a href="perfil"><i class="fa fa-user"></i><span class="menu-text">Meu Perfil</span></a></li>
+        <li><a href="feed"><i class="fa fa-paint-brush"></i><span class="menu-text">Tatuagens</span></a></li>
+        <li><a href="sobre"><i class="fa fa-info-circle"></i><span class="menu-text">Sobre</span></a></li>
+    </ul>
+
+    <div class="sidebar-footer">
+        <a href="config"><i class="fa fa-cogs"></i><span class="menu-text">Configurações</span></a>
+        <a href="login"><i class="fa fa-sign-out-alt"></i><span class="menu-text">Logout</span></a>
+    </div>
+</div>
+
+    <div class="tattoo-artist-profile">
+        <!-- Cabeçalho do Perfil -->
+        <header class="profile-header">
+            <img src="/public/img/tattoo-artist-photo.png" alt="Foto do Tatuador" class="artist-photo">
+            <div class="artist-info">
+                <h1>Nome do Tatuador</h1>
+                <p>Especializações: Preto e Cinza, Old School, Realismo</p>
+                <p>Sobre: Apaixonado por arte e tatuagens há mais de 10 anos.</p>
+            </div>
+            <button class="edit-profile-button">Editar Perfil</button>
+        </header>
+
+        <!-- Seção de Gerenciamento de Publicações -->
+        <section class="publications-section">
+            <div class="section-header">
+                <h2>Minhas Publicações</h2>
+                <button class="add-publication-button">+ Nova Publicação</button>
+            </div>
+            <div class="publications-list">
+                <article class="publication-item">
+                    <img src="/public/img/tattoo1.png" alt="Tatuagem 1" class="publication-image">
+                    <div class="publication-info">
+                        <p class="description">Tatuagem Realista em Preto e Cinza</p>
+                        <p class="date">Publicado em: 15/08/2023</p>
+                        <div class="publication-actions">
+                            <button class="icon-button" aria-label="Editar">✏️</button>
+                            <button class="icon-button" aria-label="Excluir">❌</button>
+                        </div>
+                    </div>
+                </article>
+                <!-- Repita para outras publicações -->
+            </div>
+        </section>
+
+        <!-- Seção de Estatísticas e Feedback -->
+        <section class="statistics-section">
+            <h2>Estatísticas e Feedback</h2>
+            <div class="stats">
+                <div class="stat-item">
+                    <h3>Likes</h3>
+                    <p>1250</p>
+                </div>
+                <div class="stat-item">
+                    <h3>Comentários</h3>
+                    <p>320</p>
+                </div>
+                <div class="stat-item">
+                    <h3>Feedbacks</h3>
+                    <p>98% Positivo</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+<script src="/js/script.js"></script>
+</html>

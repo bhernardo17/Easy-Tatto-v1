@@ -1,0 +1,169 @@
+/* Sidebar */
+.sidebar {
+    width: 80px;
+    height: 100%;
+    background-color: #2e2e2e; /* fundo cinza escuro */
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 20px;
+    font-family: 'Arial', sans-serif;
+    transition: width 0.3s ease;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Header da Sidebar */
+.sidebar-header {
+    padding: 10px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: #2e2e2e;
+    color: #ffffff;
+    border-bottom: 1px solid #4b4b4b;
+}
+
+.menu-icon {
+    font-size: 24px;
+    display: inline-block;
+}
+
+.header-text {
+    display: none;
+}
+
+.sidebar:hover .header-text {
+    display: block;
+}
+
+.sidebar:hover .menu-icon {
+    display: none;
+}
+
+/* Estilo da lista principal */
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 10px;
+    flex-grow: 1;
+}
+
+.sidebar-menu li {
+    padding: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+/* Link com ícones e texto */
+.sidebar-menu li a {
+    text-decoration: none;
+    color: #ecf0f1;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    width: 100%;
+    transition: color 0.3s ease;
+}
+
+/* Ícones e texto do menu */
+.sidebar-menu li a i {
+    font-size: 20px;
+    transition: transform 0.3s ease, color 0.3s ease;
+    color: #ecf0f1;
+}
+
+.sidebar-menu li a .menu-text {
+    display: none;
+    margin-left: 10px;
+}
+
+.sidebar:hover .menu-text {
+    display: inline-block;
+}
+
+/* Efeito de hover com azul petróleo */
+.sidebar-menu li a:hover {
+    color: #1b3d4d; /* Azul petróleo */
+}
+
+.sidebar-menu li a:hover i {
+    color: #1b3d4d;
+    transform: scale(1.1);
+}
+
+.sidebar-menu li a::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -5px;
+    height: 0;
+    width: 3px;
+    background-color: #1b3d4d; /* Azul petróleo */
+    transition: height 0.3s ease;
+    transform: translateY(-50%);
+    opacity: 0;
+}
+
+.sidebar-menu li a:hover::before {
+    height: 60%;
+    opacity: 1;
+}
+
+/* Rodapé fixo */
+.sidebar-footer {
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: 1px solid #4b4b4b;
+}
+
+.sidebar-footer a {
+    color: #ecf0f1;
+    text-decoration: none;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+}
+
+.sidebar-footer a:hover {
+    color: #1b3d4d;
+}
+
+.sidebar-footer a .menu-text {
+    display: none;
+    margin-left: 10px;
+}
+
+.sidebar:hover .sidebar-footer a .menu-text {
+    display: inline-block;
+}
+
+/* Expansão da Sidebar */
+.sidebar:hover {
+    width: 250px;
+}
+
+.sidebar:hover .sidebar-menu li a i,
+.sidebar:hover .sidebar-footer a i {
+    transform: scale(1.1);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 70px;
+    }
+    .sidebar:hover {
+        width: 200px;
+    }
+}

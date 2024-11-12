@@ -1,0 +1,160 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* font-family: Arial, sans-serif;
+    background-color: #1c1c1c; */
+    color: #e0e0e0;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #2e2e2e;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.feed-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    margin-left: 10%;
+}
+
+.post-card {
+    background-color: #2e2e2e;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.post-card:hover {
+    transform: scale(1.02);
+}
+
+.post-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid #444;
+}
+
+.post-details {
+    padding: 15px;
+}
+
+.post-details h2 {
+    font-size: 1.1em;
+    color: #ffffff;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.post-details .description {
+    font-size: 0.9em;
+    color: #bbbbbb;
+    margin-bottom: 12px;
+}
+
+.post-actions {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85em;
+    color: #aaaaaa;
+}
+
+.post-actions span {
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.post-actions span:hover {
+    color: #ffffff;
+}
+
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #1c1c1c;
+    color: #fff;
+}
+
+.feed-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    margin-left: 10%;
+}
+
+.post-card {
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.post-card:hover {
+    transform: scale(1.03);
+}
+
+.post-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.post-details {
+    padding: 15px;
+}
+
+.post-details h2 {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+.post-details .description {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.post-actions {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9em;
+    color: #888;
+}
+
+.post-actions span {
+    cursor: pointer;
+}
+
+.post-actions span:hover {
+    color: #333;
+} */
+
+
+
+
+

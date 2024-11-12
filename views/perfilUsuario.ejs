@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Usuário</title>
+    <link rel="stylesheet" href="/css/perfilUsuario.css">
+    <link rel="stylesheet" href="/css/sidebar.css">
+    <link rel="stylesheet" href="/css/tema.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+</head>
+
+
+<body>
+    <!--<img src="/img/logo-easy.jpg" style="width: 70%;"> -->
+
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <!-- Ícone de Menu (visível apenas quando a sidebar está fechada) -->
+        <span class="menu-icon">☰</span>
+        <!-- Texto do cabeçalho (visível quando a sidebar está expandida) -->
+        <h2 class="header-text">Fácil encontrar uma Tatto!</h2>
+    </div>
+
+    <ul class="sidebar-menu">
+        <li><a href="perfil"><i class="fa fa-user"></i><span class="menu-text">Meu Perfil</span></a></li>
+        <li><a href="feed"><i class="fa fa-paint-brush"></i><span class="menu-text">Tatuagens</span></a></li>
+        <li><a href="sobre"><i class="fa fa-info-circle"></i><span class="menu-text">Sobre</span></a></li>
+    </ul>
+
+    <div class="sidebar-footer">
+        <a href=""><i class="fa fa-cogs"></i><span class="menu-text">Configurações</span></a>
+        <a href="login"><i class="fa fa-sign-out-alt"></i><span class="menu-text">Logout</span></a>
+    </div>
+</div>
+
+
+
+    <div class="profile-container">
+        <div class="profile-header">
+            <img src="/public/img/user-photo.png" alt="Foto do Usuário" class="user-photo">
+            <div class="user-info">
+                <h1>Nome do Usuário</h1>
+                <p>Cliente desde: Janeiro 2023</p>
+                <p>Tatuagens favoritas: 8</p>
+            </div>
+        </div>
+
+        <section class="favorites-section">
+            <h2>Tatuagens Favoritas</h2>
+            <ul class="favorites-list">
+                <li>
+                    <span class="tattoo-info">Tatuagem Favorita</span>
+                    <span class="artist-name">Artista: Nome do Artista</span>
+                    <button class="icon-button" aria-label="Remover">
+                        ❌
+                    </button>
+                </li>
+                <!-- Repita para outros itens -->
+            </ul>
+        </section>
+
+        <section class="history-section">
+            <h2>Histórico de Agendamentos</h2>
+            <ul class="history-list">
+                <li>
+                    <div class="appointment-info">
+                        <span><strong>Data:</strong> 15/08/2023</span>
+                        <span><strong>Artista:</strong> Nome do Artista</span>
+                        <p><strong>Descrição:</strong> Pequena descrição sobre a tatuagem.</p>
+                    </div>
+                    <button class="icon-button" aria-label="Deixar Feedback">
+                        ⭐
+                    </button>
+                </li>
+                <!-- Repita para outros agendamentos -->
+            </ul>
+        </section>
+    </div>
+  
+</body>
+<script src="/js/script.js"></script>
+</html>

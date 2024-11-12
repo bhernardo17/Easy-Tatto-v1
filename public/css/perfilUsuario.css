@@ -1,0 +1,104 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: black;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-container {
+    max-width: 700px;
+    width: 100%;
+    background-color: #fdfdfdee;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 15px;
+}
+
+.user-photo {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin-right: 20px;
+    border: 2px solid #ddd;
+}
+
+.user-info h1 {
+    font-size: 1.6rem;
+    margin: 0;
+    color: #222;
+}
+
+.user-info p {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.favorites-section, .history-section {
+    margin-bottom: 30px;
+}
+
+.favorites-section h2, .history-section h2 {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: normal;
+}
+
+.favorites-list, .history-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.favorites-list li, .history-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.tattoo-info, .appointment-info {
+    font-size: 1rem;
+    color: #444;
+}
+
+.artist-name {
+    font-size: 0.85rem;
+    color: #777;
+    margin-top: 2px;
+}
+
+.icon-button {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #ff5c5c;
+    padding: 0;
+    margin: 0;
+}
+
+.icon-button:hover {
+    color: #e04b4b;
+}
+
+.appointment-info p {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 5px 0 0;
+}
+
+
