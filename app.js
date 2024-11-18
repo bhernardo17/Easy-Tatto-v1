@@ -36,7 +36,6 @@ app.get('/perfilUsuario', (req, res) => {
     res.render('perfilUsuario'); // Renderiza o arquivo perfilUsuario.ejs
 });
 
-// Rota para o perfil do usuário comum (perfilUsuario.ejs)
 app.get('/config', (req, res) => {
     console.log("Acessando as configurações");
     res.render('configuracoes'); // Renderiza o arquivo perfilUsuario.ejs
