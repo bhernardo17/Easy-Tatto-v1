@@ -1,87 +1,81 @@
 const express = require('express');
-const mongoose = require('mongoose'); // Para conexão com o MongoDB
-const dotenv = require('dotenv'); // Para carregar variáveis de ambiente
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
 const path = require('path');
+const userRoutes = require('./routes/userRoutes'); // Rotas para usuários
 
 dotenv.config(); // Carrega as variáveis do arquivo .env
 
-// Cria a instância do Express
+// Configurações principais
 const app = express();
-
-// Configurações
 const PORT = process.env.PORT || 3000;
-const MONGO_URI = process.env.MONGO_URI;
+const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/seu_banco_de_dados';
 
 // Conexão com o MongoDB
-mongoose.connect(MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-})
+mongoose
+    .connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('✅ Conectado ao MongoDB!'))
     .catch((error) => {
         console.error('❌ Erro ao conectar ao MongoDB:', error.message);
-        process.exit(1); // Finaliza o processo em caso de erro
+        process.exit(1); // Encerra o servidor em caso de erro
     });
 
-// Configurando o EJS como motor de visualização
+// Configurações do Express
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// Middleware para servir arquivos estáticos da pasta 'public'
+// Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true })); // Para lidar com formulários
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.urlencoded({ extended: true })); // Middleware para tratar dados de formulários
 
-// Rotas
-// Página inicial
+
 app.get('/sobre', (req, res) => {
-    res.render('index'); // Renderiza o arquivo index.ejs
+    res.render('index'); // Renderiza a página "sobre"
 });
 
-// Página de login e cadastro
 app.get('/login', (req, res) => {
-    res.render('login'); // Renderiza o arquivo login.ejs
+    res.render('login'); // Renderiza a página de login
 });
 
-// Página do perfil do tatuador
 app.get('/perfil', (req, res) => {
-    console.log("Acessando a página de perfil");
-    res.render('perfil'); // Renderiza o arquivo perfil.ejs
+    console.log("Acessando a página de perfil do tatuador");
+    res.render('perfil');
 });
 
-// Página do perfil do usuário
 app.get('/perfilUsuario', (req, res) => {
     console.log("Acessando a página de perfil do usuário");
-    res.render('perfilUsuario'); // Renderiza o arquivo perfilUsuario.ejs
+    res.render('perfilUsuario');
 });
 
-// Página de configurações
 app.get('/config', (req, res) => {
     console.log("Acessando as configurações");
-    res.render('configuracoes'); // Renderiza o arquivo configuracoes.ejs
+    res.render('configuracoes');
 });
 
-// Página de feed
 app.get('/feed', (req, res) => {
-    // Exemplo de posts que podem vir do banco de dados futuramente
     const posts = [
         { imageUrl: '/img/tattoo1.jpg', artistName: 'Artista 1', description: 'Tatuagem Old School', likes: 120, comments: 45 },
         { imageUrl: '/img/tattoo2.jpg', artistName: 'Artista 2', description: 'Flashs disponíveis', likes: 98, comments: 34 },
     ];
-    res.render('feed', { posts }); // Envia os posts para o arquivo feed.ejs
+    res.render('feed', { posts }); // Envia os posts para a página feed
 });
 
-// Middleware para lidar com rotas inexistentes
-app.use((req, res, next) => {
-    res.status(404).send('Página não encontrada!');
+// Rotas de API
+app.use('/api/users', userRoutes); // Define o prefixo para as rotas de usuários
+
+// Middleware para rotas inexistentes
+app.use((req, res) => {
+    res.status(404).render('404', { message: 'Página não encontrada!' });
 });
 
-// Middleware para tratamento de erros gerais
+// Middleware para erros gerais
 app.use((err, req, res, next) => {
     console.error('Erro:', err.message);
-    res.status(500).send('Ocorreu um erro no servidor!');
+    res.status(500).render('500', { message: 'Erro interno no servidor!' });
 });
 
 // Inicia o servidor
 app.listen(PORT, () => {
-    console.log(`🚀 Servidor rodando na porta ${PORT}`);
+    console.log(`🚀 Servidor rodando em http://localhost:${PORT}`);
 });
