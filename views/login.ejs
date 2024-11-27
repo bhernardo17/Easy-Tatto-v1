@@ -37,7 +37,7 @@
                 </div>
                 <div class="input-group">
                     <label for="confirm-password">Confirmar Senha</label>
-                    <input type="password" id="confirm-password" name="confirm-password" required>
+                    <input type="password" id="confirm-password" name="confirmPassword" required>
                 </div>
                 <div class="input-group">
                     <label for="role">Tipo de Conta</label>
@@ -64,7 +64,8 @@
                 : "<h1>Bem-vindo ao Easy Tattoo!</h1><img src='/img/logo-easy.jpg' style='width: 280px; height: 160px;' alt='Logo Easy Tattoo'>";
             document.getElementById("toggle-form").innerText = isLogin ? "Já tem uma conta? Entrar" : "Cadastrar-se";
             document.getElementById("submit-btn").innerText = isLogin ? "Cadastrar" : "Entrar";
-            document.getElementById("login-form").action = isLogin ? "/cadastro" : "/login";
+            document.getElementById("login-form").action = isLogin ? "/register" : "/login";
+
 
             // Oculta a mensagem de erro ao trocar de modo
             document.querySelector('.error-message').style.display = 'none';
@@ -77,27 +78,19 @@
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
-            // Lógica para validação simulada
+            // Lógica de login
             if (isLogin) {
-                if (username === 'usuario' && password === 'senha') {
-                    console.log('Login bem-sucedido!');
-                    window.location.href = "/feed"; // Redireciona para o feed
-                } else {
-                    const errorMessage = document.querySelector('.error-message');
-                    errorMessage.style.display = 'block';
-                    errorMessage.textContent = 'Usuário ou senha incorretos.';
-                }
+                // Envia o formulário de login real para o backend
+                this.submit();
             } else {
-                // Simulação para cadastro
+                // Cadastro
                 const email = document.getElementById('email').value;
                 const confirmPassword = document.getElementById('confirm-password').value;
                 const role = document.getElementById('role').value;
 
                 if (password === confirmPassword) {
-                    console.log('Cadastro realizado com sucesso!');
-                    console.log(`Usuário: ${username}, Email: ${email}, Tipo: ${role}`);
-                    alert('Cadastro concluído! Agora faça login.');
-                    toggleForm(); // Volta ao modo de login
+                    // Envia o formulário de cadastro real para o backend
+                    this.submit();
                 } else {
                     alert('As senhas não coincidem.');
                 }
