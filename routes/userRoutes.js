@@ -33,42 +33,30 @@ router.post('/register', async (req, res) => {
     }
 });
 
-// Rota de login
 router.post('/login', async (req, res) => {
-    const { email, senha } = req.body;
-
-    console.log('Dados recebidos para login:', { email, senha });
+    console.log('Dados recebidos:', req.body);
+    
+    const { email, senha } = req.body; // Use 'email' e 'senha' como no formulário
 
     try {
-        // Verifica se o usuário existe no banco
         const user = await User.findOne({ email });
-
-        if (!user) {
-            console.log('Usuário não encontrado com o email:', email);
-            return res.render('login', { error: 'Email ou senha incorretos.' });
+        if (!user || user.senha !== senha) {
+            return res.render('login', { errorMessage: 'Email ou senha incorretos.' });
         }
 
-        if (user.senha !== senha) {
-            console.log('Senha incorreta para o email:', email);
-            return res.render('login', { error: 'Email ou senha incorretos.' });
-        }
-
-        console.log('Usuário logado com sucesso:', { id: user._id, nome: user.nome, tipo: user.tipo });
-
-        // Salva o usuário na sessão (simples)
         req.session.user = {
             id: user._id,
             nome: user.nome,
-            tipo: user.tipo,
+            tipo: user.tipo
         };
 
-        // Redireciona para a página /feed
-        res.redirect('/feed');
+        res.redirect('/sobre'); // Página de destino após login bem-sucedido
     } catch (error) {
         console.error('Erro no login:', error);
-        res.status(500).render('login', { error: 'Erro interno. Tente novamente mais tarde.' });
+        res.status(500).render('login', { errorMessage: 'Erro interno. Tente novamente.' });
     }
 });
+
 
 // Rota para /feed (apenas para teste)
 router.get('/feed', (req, res) => {
