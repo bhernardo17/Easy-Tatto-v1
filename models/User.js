@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
+// Definição do Schema do Usuário
 const UserSchema = new mongoose.Schema({
     nome: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     senha: { type: String, required: true },
     tipo: { type: String, enum: ['usuario', 'tatuador'], required: true },
 }, { timestamps: true });
-
-module.exports = mongoose.model('User', UserSchema);
 
 // Middleware para hashear a senha antes de salvar
 UserSchema.pre('save', async function (next) {
@@ -22,4 +22,5 @@ UserSchema.methods.comparePassword = async function (senha) {
     return await bcrypt.compare(senha, this.senha);
 };
 
+// Exporta o modelo
 module.exports = mongoose.model('User', UserSchema);

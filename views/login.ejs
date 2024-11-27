@@ -19,29 +19,34 @@
         <button id="toggle-form" onclick="toggleForm()">Cadastrar-se</button>
 
         <form action="/login" method="POST" id="login-form">
+            <!-- Mensagem de erro dinamicamente renderizada -->
+            <p class="error-message" style="color: red; aria-live="assertive">
+                <%= errorMessage || '' %>
+            </p>
+
             <!-- Campos de Login -->
             <div class="input-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
+                <label for="username">Usuário</label>
+                <input type="text" id="username" name="username" required aria-label="Digite seu usuário">
             </div>
             <div class="input-group">
                 <label for="password">Senha</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="password" name="password" required aria-label="Digite sua senha">
             </div>
 
             <!-- Campos adicionais para Cadastro (ocultos por padrão) -->
             <div id="register-fields" style="display: none;">
                 <div class="input-group">
-                    <label for="email">E-mail</label>
-                    <input type="email" id="email" name="email" required>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required aria-label="Digite seu email">
                 </div>
                 <div class="input-group">
                     <label for="confirm-password">Confirmar Senha</label>
-                    <input type="password" id="confirm-password" name="confirmPassword" required>
+                    <input type="password" id="confirm-password" name="confirmPassword" required aria-label="Confirme sua senha">
                 </div>
                 <div class="input-group">
                     <label for="role">Tipo de Conta</label>
-                    <select id="role" name="role">
+                    <select id="role" name="role" aria-label="Selecione o tipo de conta">
                         <option value="usuario">Usuário</option>
                         <option value="tatuador">Tatuador</option>
                     </select>
@@ -49,7 +54,6 @@
             </div>
 
             <button type="submit" class="btn-login" id="submit-btn">Entrar</button>
-            <p class="error-message" style="display: none; color: red;">Usuário ou senha incorretos.</p>
         </form>
     </div>
 
@@ -64,36 +68,43 @@
                 : "<h1>Bem-vindo ao Easy Tattoo!</h1><img src='/img/logo-easy.jpg' style='width: 280px; height: 160px;' alt='Logo Easy Tattoo'>";
             document.getElementById("toggle-form").innerText = isLogin ? "Já tem uma conta? Entrar" : "Cadastrar-se";
             document.getElementById("submit-btn").innerText = isLogin ? "Cadastrar" : "Entrar";
-            document.getElementById("login-form").action = isLogin ? "/register" : "/login";
-
+            document.getElementById("login-form").action = isLogin ? "/cadastro" : "/login";
 
             // Oculta a mensagem de erro ao trocar de modo
             document.querySelector('.error-message').style.display = 'none';
         }
 
-        document.getElementById('login-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Impede o envio automático do formulário
-
+        document.getElementById('login-form').addEventListener('submit', function (event) {
             const isLogin = document.getElementById("register-fields").style.display === "none";
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
+            const submitButton = document.getElementById('submit-btn');
 
-            // Lógica de login
-            if (isLogin) {
-                // Envia o formulário de login real para o backend
-                this.submit();
-            } else {
-                // Cadastro
+            // Exibe o estado de carregamento no botão
+            submitButton.disabled = true;
+            submitButton.innerText = 'Processando...';
+
+            // Lógica de login ou cadastro
+            if (!isLogin) {
                 const email = document.getElementById('email').value;
                 const confirmPassword = document.getElementById('confirm-password').value;
-                const role = document.getElementById('role').value;
 
-                if (password === confirmPassword) {
-                    // Envia o formulário de cadastro real para o backend
-                    this.submit();
-                } else {
+                if (password !== confirmPassword) {
+                    event.preventDefault();
+                    submitButton.disabled = false;
+                    submitButton.innerText = isLogin ? "Entrar" : "Cadastrar";
                     alert('As senhas não coincidem.');
                 }
+            }
+        });
+
+        // Validação de senha ao digitar
+        document.getElementById('confirm-password').addEventListener('input', function () {
+            const password = document.getElementById('password').value;
+            if (this.value !== password) {
+                this.style.borderColor = 'red';
+            } else {
+                this.style.borderColor = 'green';
             }
         });
     </script>
